@@ -2,3 +2,13 @@ res://scenes/UI/arena_time_ui.tscn
 res://resources/tileset.tres
 res://scenes/main/main.tscn
 res://scenes/game_object/experience_vial/experience_vial.tscn
+res://scenes/UI/floating_text.tscn
+res://scenes/UI/floating_text.gd
+res://scenes/component/hurtbox_component.tscn
+res://scenes/component/hurtbox_component.gd
+res://scenes/component/hit_flash_component.tscn
+res://scenes/component/hit_flash_component.gd
+res://scenes/component/hit_flash_component.gdshader
+res://scenes/game_object/basic_enemy/basic_enemy.tscn
+res://scenes/component/hit_flash_component_material.tres
+res://scenes/game_object/wizard_enemy/wizard_enemy.tscn
