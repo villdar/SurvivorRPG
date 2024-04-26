@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://6405xyvvsqjf"
+path="res://.godot/imported/Holding Out For A Hero.mp3-f72011ba1b21fe85468caf8861fd0bad.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Holding Out For A Hero.mp3"
+dest_files=["res://.godot/imported/Holding Out For A Hero.mp3-f72011ba1b21fe85468caf8861fd0bad.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

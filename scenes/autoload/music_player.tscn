@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://de85w4uogq0y7"]
+
+[ext_resource type="AudioStream" uid="uid://6405xyvvsqjf" path="res://assets/audio/Holding Out For A Hero.mp3" id="1_6f3vf"]
+[ext_resource type="Script" path="res://scenes/autoload/music_player.gd" id="2_ylp0i"]
+
+[node name="MusicPlayer" type="AudioStreamPlayer"]
+process_mode = 3
+stream = ExtResource("1_6f3vf")
+volume_db = -18.0
+autoplay = true
+bus = &"music"
+script = ExtResource("2_ylp0i")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
