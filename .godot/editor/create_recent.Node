@@ -1,6 +1,8 @@
-VBoxContainer
+AudioStreamPlayer2D
 AnimationPlayer
 ColorRect
+CanvasLayer
+VBoxContainer
 MarginContainer
 PanelContainer
 Node
@@ -10,5 +12,3 @@ Node2D
 CollisionShape2D
 CharacterBody2D
 GPUParticles2D
-Timer
-Button

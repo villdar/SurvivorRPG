@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ljsgemid58or"]
+[gd_scene load_steps=22 format=3 uid="uid://ljsgemid58or"]
 
 [ext_resource type="PackedScene" uid="uid://bbsf8pi3vanms" path="res://scenes/component/health_component.tscn" id="1_1hem4"]
 [ext_resource type="Script" path="res://scenes/game_object/wizard_enemy/wizard_enemy.gd" id="1_s6r3t"]
@@ -9,6 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://ds0wvt7mfuit1" path="res://scenes/component/vial_drop_component.tscn" id="4_vnpvm"]
 [ext_resource type="PackedScene" uid="uid://d3tseh3uu3s6u" path="res://scenes/component/hit_flash_component.tscn" id="5_6i7nc"]
 [ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="6_b30um"]
+[ext_resource type="PackedScene" uid="uid://bgfo2fbu33s71" path="res://scenes/component/random_audio_stream_player_2d_component.tscn" id="8_82ows"]
+[ext_resource type="AudioStream" uid="uid://cvnsskkihqsmx" path="res://assets/audio/footstep_carpet_000.ogg" id="9_6fy67"]
+[ext_resource type="AudioStream" uid="uid://cs4bffbava3kh" path="res://assets/audio/footstep_carpet_001.ogg" id="10_1ol6o"]
+[ext_resource type="AudioStream" uid="uid://dufnftys0nff1" path="res://assets/audio/footstep_carpet_002.ogg" id="11_6fdjy"]
+[ext_resource type="AudioStream" uid="uid://cd7y365y303tb" path="res://assets/audio/footstep_carpet_003.ogg" id="12_xr8bh"]
+[ext_resource type="AudioStream" uid="uid://dbiq17l7r2elg" path="res://assets/audio/footstep_carpet_004.ogg" id="13_nykdg"]
 
 [sub_resource type="Animation" id="Animation_i8e34"]
 length = 0.001
@@ -154,6 +160,10 @@ hit_flash_material = SubResource("ShaderMaterial_ad1e6")
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("2_3xpsf")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
+
+[node name="HitRandomAudioPlayerComponent" parent="." instance=ExtResource("8_82ows")]
+max_distance = 300.0
+streams = Array[AudioStream]([ExtResource("9_6fy67"), ExtResource("10_1ol6o"), ExtResource("11_6fdjy"), ExtResource("12_xr8bh"), ExtResource("13_nykdg")])
 
 [node name="Visuals" type="Node2D" parent="."]
 
