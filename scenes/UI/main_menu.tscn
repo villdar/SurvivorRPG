@@ -1,70 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bagpoebql3v7b"]
+[gd_scene load_steps=6 format=3 uid="uid://bagpoebql3v7b"]
 
 [ext_resource type="TileSet" uid="uid://dw88xv6vxgn2y" path="res://resources/tileset.tres" id="1_jb45k"]
 [ext_resource type="Script" path="res://scenes/UI/main_menu.gd" id="1_quvmh"]
 [ext_resource type="PackedScene" uid="uid://d2wppdn1u27mj" path="res://scenes/UI/sound_button.tscn" id="2_6djic"]
 [ext_resource type="Shader" path="res://scenes/UI/main_menu_title.gdshader" id="3_8fi6i"]
-
-[sub_resource type="Animation" id="Animation_dtkts"]
-resource_name = "title"
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Label:theme_override_colors/font_color")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.55, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(4.23551e-06, 0.86094, 0.861322, 1), Color(0.997281, 0.664865, 0.460745, 1), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Label:material:shader_parameter/angle")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-0.2, 6.0]
-}
-
-[sub_resource type="Animation" id="Animation_r7iso"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Label:theme_override_colors/font_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [null]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Label:material:shader_parameter/angle")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-0.2]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_cs38p"]
-_data = {
-"RESET": SubResource("Animation_r7iso"),
-"title": SubResource("Animation_dtkts")
-}
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fuulc"]
 shader = ExtResource("3_8fi6i")
@@ -79,16 +18,6 @@ shader_parameter/show_bound = false
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_quvmh")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_cs38p")
-}
-autoplay = "title"
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 10.0
-one_shot = true
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_jb45k")

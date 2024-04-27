@@ -1,12 +1,10 @@
+res://scenes/main/main.tscn
 res://resources/theme/theme.tres
 res://scenes/component/hit_flash_component.gdshader
 res://resources/tileset.tres
 res://scenes/UI/vignette.gdshader
-res://scenes/autoload/music_player.tscn
-res://scenes/autoload/music_player.gd
-res://scenes/main/main.tscn
-res://scenes/UI/main_menu.tscn
-res://scenes/UI/main_menu.gd
-res://scenes/UI/main_menu_title.gdshader
+res://scenes/game_object/player/player.tscn
 res://scenes/UI/options_menu.tscn
 res://scenes/UI/options_menu.gd
+res://scenes/UI/main_menu.tscn
+res://scenes/UI/main_menu.gd

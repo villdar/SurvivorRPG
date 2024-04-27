@@ -62,16 +62,21 @@ text = "SFX Volume"
 [node name="SfxSlider" type="HSlider" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/SfxBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+max_value = 1.0
+step = 0.01
 
 [node name="MusicOptionBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MusicOptionBoxContainer"]
 layout_mode = 2
-text = "SFX Volume"
+text = "Music Volume"
 
 [node name="MusicSlider" type="HSlider" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MusicOptionBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
+max_value = 1.0
+step = 0.01
 
 [node name="WindowOptionContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -80,7 +85,8 @@ layout_mode = 2
 layout_mode = 2
 text = "Window Mode"
 
-[node name="SoundButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/WindowOptionContainer" instance=ExtResource("4_tgr63")]
+[node name="WindowButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/WindowOptionContainer" instance=ExtResource("4_tgr63")]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 0
