@@ -1,5 +1,7 @@
-res://scenes/UI
+res://
 res://scenes/autoload
+res://resources/meta_upgrades/
+res://scenes/UI
 res://scenes/component
 res://resources/theme
 res://resources/theme/
