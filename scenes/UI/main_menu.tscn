@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bagpoebql3v7b"]
+[gd_scene load_steps=7 format=3 uid="uid://bagpoebql3v7b"]
 
 [ext_resource type="TileSet" uid="uid://dw88xv6vxgn2y" path="res://resources/tileset.tres" id="1_jb45k"]
 [ext_resource type="Script" path="res://scenes/UI/main_menu.gd" id="1_quvmh"]
+[ext_resource type="PackedScene" uid="uid://c3obt6w0e5fhl" path="res://scenes/UI/vignette.tscn" id="2_6diql"]
 [ext_resource type="PackedScene" uid="uid://d2wppdn1u27mj" path="res://scenes/UI/sound_button.tscn" id="2_6djic"]
 [ext_resource type="Shader" path="res://scenes/UI/main_menu_title.gdshader" id="3_8fi6i"]
 
@@ -50,11 +51,7 @@ size_flags_vertical = 4
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 material = SubResource("ShaderMaterial_fuulc")
 layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0.14902, 0.168627, 0.266667, 1)
-theme_override_colors/font_outline_color = Color(0.14902, 0.168627, 0.266667, 1)
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_offset_y = 0
-theme_override_constants/outline_size = 8
+theme_type_variation = &"BlueOutlineLabel"
 theme_override_font_sizes/font_size = 32
 text = "The Arena"
 
@@ -72,3 +69,5 @@ text = "Options"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Quit"
+
+[node name="Vignette" parent="." instance=ExtResource("2_6diql")]
