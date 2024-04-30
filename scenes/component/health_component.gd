@@ -10,6 +10,8 @@ var current_health
 
 func _ready():
 	current_health = max_health
+	GameEvents.heal_vial_collected.connect(on_heal_vial_collected)
+
 
 func damage(damage_amount: float):
 	current_health = clamp(current_health - damage_amount, 0, max_health)
@@ -21,6 +23,11 @@ func damage(damage_amount: float):
 
 func heal(heal_amount):
 	damage(-heal_amount)
+
+
+func on_heal_vial_collected():
+	heal(5)
+
 
 func get_health_percent():
 	if max_health <= 0:

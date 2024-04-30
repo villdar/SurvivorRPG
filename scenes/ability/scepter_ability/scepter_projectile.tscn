@@ -1,0 +1,150 @@
+[gd_scene load_steps=14 format=3 uid="uid://6olwtbqg0u8p"]
+
+[ext_resource type="Script" path="res://scenes/ability/scepter_ability/scepter_projectile.gd" id="1_vx6fh"]
+[ext_resource type="Texture2D" uid="uid://c2n04pmuoyig8" path="res://scenes/ability/scepter_ability/projectile.png" id="2_77t1e"]
+[ext_resource type="PackedScene" uid="uid://clqaxyu0fbljq" path="res://scenes/component/hitbox_component.tscn" id="3_t5oay"]
+[ext_resource type="Texture2D" uid="uid://c6vars4l8jm6x" path="res://assets/particle.png" id="4_00wcw"]
+
+[sub_resource type="Animation" id="Animation_6inc3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_tch1u"]
+resource_name = "fire"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:skew")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.2, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.174533, 0.0, 0.174533]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vfltu"]
+_data = {
+"RESET": SubResource("Animation_6inc3"),
+"fire": SubResource("Animation_tch1u")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yg0lv"]
+radius = 4.0
+
+[sub_resource type="Gradient" id="Gradient_rl8c6"]
+colors = PackedColorArray(0.14902, 0.168627, 0.266667, 1, 0.920768, 9.49138e-05, 0.718804, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_764w2"]
+gradient = SubResource("Gradient_rl8c6")
+
+[sub_resource type="Curve" id="Curve_bjnya"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.101449, 1), 0.0, 0.0, 0, 0, Vector2(0.652174, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_j1yha"]
+curve = SubResource("Curve_bjnya")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mv1gv"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 0.9
+spread = 180.0
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+orbit_velocity_min = 0.917
+orbit_velocity_max = 0.937
+gravity = Vector3(0, 0, 0)
+damping_min = 300.0
+damping_max = 400.0
+scale_min = 0.1
+scale_max = 0.3
+scale_curve = SubResource("CurveTexture_j1yha")
+color_initial_ramp = SubResource("GradientTexture1D_764w2")
+
+[node name="ScepterProjectile" type="Node2D"]
+script = ExtResource("1_vx6fh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vfltu")
+}
+autoplay = "fire"
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_77t1e")
+
+[node name="HitboxComponent" parent="." instance=ExtResource("3_t5oay")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_yg0lv")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 100
+amount_ratio = 0.9
+process_material = SubResource("ParticleProcessMaterial_mv1gv")
+texture = ExtResource("4_00wcw")
+lifetime = 0.2
+one_shot = true
+fixed_fps = 0
+interpolate = false

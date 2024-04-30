@@ -1,3 +1,4 @@
+AbilityUpgrade
 Resource
 Theme
 TileSet

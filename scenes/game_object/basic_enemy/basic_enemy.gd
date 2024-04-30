@@ -2,10 +2,11 @@ extends CharacterBody2D
 
 @onready var visuals = $Visuals
 @onready var velocity_component = $VelocityComponent
-
+@onready var knockback_component = $KnockbackComponent
 
 func _ready():
 	$HurtboxComponent.hit.connect(on_hit)
+
 
 func _process(delta):
 	velocity_component.accelerate_to_player()
@@ -18,3 +19,4 @@ func _process(delta):
 
 func on_hit():
 	$HitRandomAudioPlayerComponent.play_random()
+	knockback_component.apply_knockback(velocity_component)

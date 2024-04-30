@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ljsgemid58or"]
+[gd_scene load_steps=24 format=3 uid="uid://ljsgemid58or"]
 
 [ext_resource type="PackedScene" uid="uid://bbsf8pi3vanms" path="res://scenes/component/health_component.tscn" id="1_1hem4"]
 [ext_resource type="Script" path="res://scenes/game_object/wizard_enemy/wizard_enemy.gd" id="1_s6r3t"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://b6mlvtdf5math" path="res://scenes/component/hurtbox_component.tscn" id="4_gqpbm"]
 [ext_resource type="PackedScene" uid="uid://ds0wvt7mfuit1" path="res://scenes/component/vial_drop_component.tscn" id="4_vnpvm"]
 [ext_resource type="PackedScene" uid="uid://d3tseh3uu3s6u" path="res://scenes/component/hit_flash_component.tscn" id="5_6i7nc"]
+[ext_resource type="PackedScene" uid="uid://dd4mjmm5b85wo" path="res://scenes/component/knockback_component.tscn" id="5_fn68y"]
+[ext_resource type="PackedScene" uid="uid://bmqok5jl5l80f" path="res://scenes/component/heal_vial_drop_component.tscn" id="5_g1twg"]
 [ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="6_b30um"]
 [ext_resource type="PackedScene" uid="uid://bgfo2fbu33s71" path="res://scenes/component/random_audio_stream_player_2d_component.tscn" id="8_82ows"]
 [ext_resource type="AudioStream" uid="uid://cvnsskkihqsmx" path="res://assets/audio/footstep_carpet_000.ogg" id="9_6fy67"]
@@ -151,6 +153,13 @@ acceleration = 20.0
 
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_vnpvm")]
 health_component = NodePath("../HealthComponent")
+
+[node name="HealVialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_g1twg")]
+drop_percent = 0.02
+health_component = NodePath("../HealthComponent")
+
+[node name="KnockbackComponent" parent="." instance=ExtResource("5_fn68y")]
+is_knockable = true
 
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_6i7nc")]
 health_component = NodePath("../HealthComponent")

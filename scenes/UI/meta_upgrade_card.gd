@@ -5,7 +5,7 @@ extends PanelContainer
 @onready var progress_bar = %ProgressBar
 @onready var purchase_button = %PurchaseButton
 @onready var progress_label = %ProgressLabel
-@onready var count_label = %CountLabel
+@onready var count_label: Label = %CountLabel
 
 var upgrade: MetaUpgrade
 
@@ -22,7 +22,7 @@ func set_meta_upgrade(upgrade: MetaUpgrade):
 
 func update_progress():
 	var current_quantity = 0
-	if MetaProgression.save_data["meta_upgrades"].has([upgrade.id]):
+	if MetaProgression.save_data["meta_upgrades"].has(upgrade.id):
 		current_quantity = MetaProgression.save_data["meta_upgrades"][upgrade.id]["quantity"]
 	var is_maxed = current_quantity >= upgrade.max_quantity
 	var currency = MetaProgression.save_data["meta_upgrade_currency"]

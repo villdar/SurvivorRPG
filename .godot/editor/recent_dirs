@@ -1,9 +1,12 @@
+res://resources/upgrades/
+res://scenes/ability/scepter_ability
+res://scenes/ability/scepter_ability_controller
+res://scenes/component
 res://scenes/ability
 res://
 res://scenes/autoload
 res://resources/meta_upgrades/
 res://scenes/UI
-res://scenes/component
 res://resources/theme
 res://resources/theme/
 res://scenes/game_object

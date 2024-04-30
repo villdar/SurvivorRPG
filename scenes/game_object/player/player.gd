@@ -4,7 +4,6 @@ extends CharacterBody2D
 
 @onready var damage_interval_timer = $DamageIntervalTimer
 @onready var health_component = $HealthComponent
-@onready var health_bar = $HealthBar
 @onready var abilities = $Abilities
 @onready var animation_player = $AnimationPlayer
 @onready var visuals = $Visuals
@@ -18,12 +17,10 @@ func _ready():
 	$CollisionArea2D.body_entered.connect(on_body_entered)
 	$CollisionArea2D.body_exited.connect(on_body_exited)
 	base_speed = velocity_component.max_speed
-	
 	damage_interval_timer.timeout.connect(on_damage_interval_timer_timeout)
 	health_component.health_decreased.connect(on_health_decreased)
-	health_component.health_changed.connect(on_health_changed)
 	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
-	update_health_display()
+
 
 
 func _process(delta):
@@ -54,11 +51,6 @@ func check_deal_damage():
 		return
 	health_component.damage(1)
 	damage_interval_timer.start()
-	#print(health_component.current_health)
-
-
-func update_health_display():
-	health_bar.value = health_component.get_health_percent()
 
 
 func on_body_entered(other_body: Node2D):
@@ -77,10 +69,6 @@ func on_damage_interval_timer_timeout():
 func on_health_decreased():
 	GameEvents.emit_player_damaged()
 	$HitRandomStreamPlayer.play_random()
-
-
-func on_health_changed():
-	update_health_display()
 
 
 func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, current_upgrades: Dictionary):

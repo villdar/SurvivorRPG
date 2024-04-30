@@ -1,9 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://cc2w57rhju1rm"]
+[gd_scene load_steps=24 format=3 uid="uid://cc2w57rhju1rm"]
 
 [ext_resource type="Script" path="res://scenes/game_object/bat_enemy/bat_enemy.gd" id="1_eaj8j"]
 [ext_resource type="PackedScene" uid="uid://bbsf8pi3vanms" path="res://scenes/component/health_component.tscn" id="2_0ovic"]
 [ext_resource type="PackedScene" uid="uid://0yaqnrlqvyxy" path="res://scenes/component/velocity_component.tscn" id="3_l57oc"]
 [ext_resource type="PackedScene" uid="uid://ds0wvt7mfuit1" path="res://scenes/component/vial_drop_component.tscn" id="4_0m0fy"]
+[ext_resource type="PackedScene" uid="uid://bmqok5jl5l80f" path="res://scenes/component/heal_vial_drop_component.tscn" id="5_47s7n"]
+[ext_resource type="PackedScene" uid="uid://dd4mjmm5b85wo" path="res://scenes/component/knockback_component.tscn" id="5_mrb63"]
 [ext_resource type="PackedScene" uid="uid://d3tseh3uu3s6u" path="res://scenes/component/hit_flash_component.tscn" id="5_n443t"]
 [ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="6_4n8x4"]
 [ext_resource type="PackedScene" uid="uid://c81mx3i5yrrxf" path="res://scenes/component/death_component.tscn" id="7_d6e6i"]
@@ -111,6 +113,13 @@ acceleration = 0.75
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_0m0fy")]
 drop_percent = 0.4
 health_component = NodePath("../HealthComponent")
+
+[node name="HealVialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_47s7n")]
+drop_percent = 0.02
+health_component = NodePath("../HealthComponent")
+
+[node name="KnockbackComponent" parent="." instance=ExtResource("5_mrb63")]
+is_knockable = true
 
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_n443t")]
 health_component = NodePath("../HealthComponent")

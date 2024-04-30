@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MetaUpgrade" load_steps=2 format=3 uid="uid://cwihxef3rlur2"]
+
+[ext_resource type="Script" path="res://resources/meta_upgrades/meta_upgrade.gd" id="1_0msab"]
+
+[resource]
+script = ExtResource("1_0msab")
+id = "add_knockback"
+max_quantity = 3
+experience_cost = 100
+title = "Knockback"
+description = "Knockback enemies with increasing force."

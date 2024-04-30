@@ -20,6 +20,7 @@ func on_died():
 	if vial_scene == null:
 		return
 	
+	
 	if not owner is Node2D:
 		return
 	
@@ -30,4 +31,3 @@ func on_died():
 		return
 	entities_layer.add_child(vial_instance)
 	vial_instance.global_position = spawn_position
-	

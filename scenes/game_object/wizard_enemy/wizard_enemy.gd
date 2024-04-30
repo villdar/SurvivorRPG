@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var velocity_component = $VelocityComponent
 @onready var visuals = $Visuals
+@onready var knockback_component = $KnockbackComponent
 
 var is_moving = false
 
@@ -30,3 +31,4 @@ func set_is_moving(moving: bool):
 
 func on_hit():
 	$HitRandomAudioPlayerComponent.play_random()
+	knockback_component.apply_knockback(velocity_component)
